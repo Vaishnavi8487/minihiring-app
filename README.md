@@ -173,31 +173,6 @@ Used React's built-in state management:
 
 ## Setup Instructions
 
-### Prerequisites
-- Node.js 18+ and npm
-- Modern web browser
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone <repository-url>
-cd talentflow
-```
-
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Environment variables are pre-configured (Supabase credentials)
-
-4. Start the development server
-```bash
-npm run dev
-```
-
-5. Open http://localhost:5173 in your browser
 
 The database will be automatically seeded on first load with:
 - 25 job postings (mixed active/archived)
