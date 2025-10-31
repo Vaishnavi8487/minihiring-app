@@ -7,7 +7,11 @@ import './index.css';
 import { makeServer } from './mirage/server';
 import { seedDatabase } from './lib/seed';
 
-if (import.meta.env.DEV) {
+// Enable Mirage in development, and also in production when no external API is configured
+// Set VITE_API_BASE_URL to point to a real backend to disable Mirage in prod
+const hasExternalApi = Boolean(import.meta.env.VITE_API_BASE_URL);
+const enableMirageFlag = String(import.meta.env.VITE_ENABLE_MIRAGE || '').toLowerCase() === 'true';
+if (import.meta.env.DEV || (!hasExternalApi && !import.meta.env.DEV) || enableMirageFlag) {
   makeServer();
 }
 
