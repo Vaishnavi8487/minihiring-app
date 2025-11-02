@@ -1,296 +1,200 @@
-# TalentFlow - Mini Hiring Platform
+🧭 TalentFlow – Mini Hiring Platform
 
-A comprehensive React-based hiring platform for managing jobs, candidates, and assessments. Built as a technical assignment demonstrating advanced front-end development patterns with Supabase as the backend.
+A React + TypeScript based hiring platform that helps HR teams manage jobs, candidates, and assessments.
+This project was built independently as part of the ENTNT Front-End Technical Assignment, showcasing practical front-end development skills and modern UI patterns with a simulated backend using local data and APIs.
 
-## Features
+🚀 Features
+🧩 Jobs Management
 
-### Jobs Management
-- **CRUD Operations**: Create, read, update, and archive job postings
-- **Drag-and-Drop Reordering**: Reorder jobs with optimistic updates and automatic rollback on failure
-- **Advanced Filtering**: Search by title, filter by status (active/archived)
-- **Server-like Pagination**: Paginated job listings with configurable page sizes
-- **Deep Linking**: Direct navigation to specific jobs via `/jobs/:jobId`
-- **Validation**: Required fields, unique slugs, proper error handling
+CRUD Operations — Create, read, update, and archive job postings
 
-### Candidates Management
-- **Virtualized List**: High-performance rendering of 1000+ candidates using `@tanstack/react-virtual`
-- **Advanced Search**: Client-side search by name and email
-- **Stage Filtering**: Filter candidates by hiring stage
-- **Detailed Profiles**: Individual candidate pages with full history
-- **Timeline View**: Visual timeline showing all stage changes, notes, and events
-- **Notes with @Mentions**: Add notes with @mention support (UI rendering only)
+Drag-and-Drop Reordering — Reorder jobs with optimistic UI updates and rollback on failure
 
-### Kanban Board
-- **Visual Stage Management**: Drag-and-drop candidates between hiring stages
-- **Six Stages**: Applied, Screening, Technical, Offer, Hired, Rejected
-- **Real-time Updates**: Immediate UI feedback with backend synchronization
-- **Optimistic Updates**: Changes appear instantly with automatic rollback on errors
-- **Stage Indicators**: Color-coded stages for quick visual reference
+Advanced Filtering — Search by title, filter by status (active/archived)
 
-### Assessment Builder
-- **Dynamic Form Builder**: Create custom assessments per job
-- **Multiple Question Types**:
-  - Short text (with max length)
-  - Long text (with max length)
-  - Single choice (radio buttons)
-  - Multiple choice (checkboxes)
-  - Numeric (with min/max range validation)
-  - File upload (stub implementation)
-- **Conditional Questions**: Show/hide questions based on previous answers
-- **Drag-and-Drop Reordering**: Rearrange questions within sections
-- **Live Preview**: Real-time preview pane showing the fillable form
-- **Validation Rules**: Required fields, range limits, max length
-- **Sectioned Organization**: Group questions into logical sections
+Pagination — Paginated job listings with configurable page sizes
 
-## Technology Stack
+Deep Linking — Direct navigation to /jobs/:jobId
 
-### Core
-- **React 18.3**: Modern React with hooks and concurrent features
-- **TypeScript 5.5**: Full type safety throughout the application
-- **Vite 5.4**: Lightning-fast build tool and dev server
-- **React Router DOM 6**: Client-side routing with nested routes
+Validation — Required fields, unique slugs, and error handling
 
-### UI & Interaction
-- **Tailwind CSS 3.4**: Utility-first CSS framework
-- **@dnd-kit**: Drag-and-drop functionality for jobs, questions, and kanban
-- **@tanstack/react-virtual**: Virtualized scrolling for large lists
-- **Lucide React**: Beautiful, consistent icon library
+👥 Candidates Management
 
-### Backend & Data
-- **Supabase**: PostgreSQL database with real-time capabilities
-- **@supabase/supabase-js**: Official Supabase client
-- **Row Level Security**: Secure data access policies
-- **Simulated Network**: Artificial latency and error injection for realistic testing
+Virtualized List — Efficiently render 1000+ candidates using @tanstack/react-virtual
 
-## Architecture
+Advanced Search — Filter by name and email
 
-### Project Structure
-```
+Stage Filtering — View candidates by hiring stage
+
+Detailed Profiles — Candidate details with stage history
+
+Timeline View — Visual timeline for stage changes and notes
+
+Notes with @Mentions — UI-ready notes section (rendering only)
+
+🧠 Kanban Board
+
+Drag-and-Drop Stage Management across 6 stages: Applied, Screening, Technical, Offer, Hired, Rejected
+
+Instant UI Feedback with real-time updates
+
+Optimistic Updates — Instant visual response with rollback on failure
+
+Color-Coded Stage Indicators
+
+🧾 Assessment Builder
+
+Dynamic Form Builder — Create and manage job-specific assessments
+
+Multiple Question Types: short text, long text, single/multiple choice, numeric, file upload
+
+Conditional Logic — Show/hide questions based on previous answers
+
+Drag-and-Drop Reordering
+
+Live Preview of fillable forms
+
+Validation Rules — Required fields, limits, and dependencies
+
+Sectioned Organization for clear structure
+
+🧱 Technology Stack
+Category	Technologies
+Core	React 18.3, TypeScript 5.5, Vite 5.4, React Router DOM 6
+UI / UX	Tailwind CSS 3.4, @dnd-kit, @tanstack/react-virtual, Lucide React
+Backend Simulation	MirageJS / local JSON data (for API simulation)
+Build Tools	ESLint, TypeScript strict mode
+🧩 Project Structure
 src/
 ├── components/          # Reusable UI components
-│   ├── Layout.tsx       # Main layout with navigation
-│   ├── JobModal.tsx     # Job create/edit modal
-│   └── AssessmentPreview.tsx  # Live assessment preview
-├── pages/               # Route-based page components
-│   ├── HomePage.tsx     # Landing page with stats
-│   ├── JobsPage.tsx     # Jobs listing with drag-drop
-│   ├── JobDetailPage.tsx # Single job view
-│   ├── CandidatesPage.tsx # Virtualized candidate list
-│   ├── CandidateDetailPage.tsx # Candidate profile
-│   ├── KanbanPage.tsx   # Drag-drop stage management
-│   └── AssessmentBuilderPage.tsx # Assessment editor
-├── lib/                 # Business logic and utilities
-│   ├── supabase.ts      # Supabase client setup
-│   ├── database.types.ts # TypeScript type definitions
-│   ├── api.ts           # API layer with simulated network
-│   └── seed.ts          # Database seeding utility
-├── App.tsx              # Root component with routing
-└── main.tsx             # Application entry point
-```
+│   ├── Layout.tsx
+│   ├── JobModal.tsx
+│   └── AssessmentPreview.tsx
+├── pages/               # Route-based pages
+│   ├── HomePage.tsx
+│   ├── JobsPage.tsx
+│   ├── JobDetailPage.tsx
+│   ├── CandidatesPage.tsx
+│   ├── CandidateDetailPage.tsx
+│   ├── KanbanPage.tsx
+│   └── AssessmentBuilderPage.tsx
+├── lib/
+│   ├── api.ts           # Simulated API calls
+│   ├── db.ts            # Local data storage
+│   └── seed.ts          
+├── App.tsx
+└── main.tsx
 
-### Key Design Decisions
+⚙️ Key Design Highlights
 
-#### 1. Supabase Instead of Mock Service Worker
-While the assignment suggested MSW/MirageJS, I used Supabase for several reasons:
-- **Real Persistence**: Data survives page refreshes
-- **Production-Ready**: Demonstrates real-world database integration
-- **Better Testing**: Simulates actual network conditions with latency/errors
-- **Type Safety**: Generated TypeScript types from schema
+Mock API with MirageJS / Local Data
 
-#### 2. Optimistic Updates with Rollback
-All mutations follow this pattern:
-```typescript
-// 1. Optimistically update UI
+Simulated network latency
+
+Realistic error handling
+
+Smooth user experience without an actual backend
+
+Optimistic UI Updates with Rollback
+
 setItems(newItems);
-
 try {
-  // 2. Attempt server update
   await api.updateItems(newItems);
-} catch (error) {
-  // 3. Rollback on failure
+} catch {
   setItems(originalItems);
   showError();
 }
-```
-
-#### 3. Virtualized Rendering
-The candidates list uses `@tanstack/react-virtual` to efficiently render 1000+ items:
-- Only renders visible items + overscan buffer
-- Smooth scrolling performance
-- Minimal memory footprint
-
-#### 4. Validation Architecture
-Assessments support multiple validation types:
-- **Required fields**: Enforced on submission
-- **Type validation**: Numeric ranges, text lengths
-- **Conditional logic**: Questions shown based on dependencies
-- **Real-time feedback**: Errors displayed immediately
-
-#### 5. State Management
-Used React's built-in state management:
-- Local component state for UI concerns
-- API layer for server state
-- No external state library needed for this scope
-- Could scale to Zustand/Redux if needed
-
-## Database Schema
-
-### Jobs Table
-- `id` (uuid): Primary key
-- `title` (text): Job title
-- `slug` (text): URL-friendly identifier (unique)
-- `status` (text): 'active' | 'archived'
-- `tags` (text[]): Searchable tags
-- `order` (integer): Display order for drag-drop
-- `description` (text): Job details
-
-### Candidates Table
-- `id` (uuid): Primary key
-- `name` (text): Candidate name
-- `email` (text): Email address (unique)
-- `stage` (text): Current hiring stage
-- `job_id` (uuid): Associated job
-- `notes` (text): Additional notes
-
-### Assessments Table
-- `id` (uuid): Primary key
-- `job_id` (uuid): Associated job (unique, one per job)
-- `sections` (jsonb): Assessment structure
-
-### Assessment Responses Table
-- `id` (uuid): Primary key
-- `assessment_id` (uuid): Associated assessment
-- `candidate_id` (uuid): Responding candidate
-- `responses` (jsonb): Submitted answers
-
-### Candidate Timeline Table
-- `id` (uuid): Primary key
-- `candidate_id` (uuid): Associated candidate
-- `event_type` (text): Type of event
-- `from_stage` / `to_stage` (text): Stage transitions
-- `note` (text): Event details
-- `created_at` (timestamptz): Event timestamp
-
-## Setup Instructions
 
 
-The database will be automatically seeded on first load with:
-- 25 job postings (mixed active/archived)
-- 1000 candidates across all stages
-- 5 sample assessments with multiple question types
+Virtualized Rendering for large data lists
 
-### Available Scripts
+Dynamic Validation System for form fields and assessments
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run typecheck` - Run TypeScript type checking
+State Management using React hooks and context (no external library)
 
-## Technical Highlights
+🧩 Setup Instructions
+npm install
+npm run dev      
+npm run build     
+npm run preview 
+npm run lint     
+npm run typecheck 
 
-### Performance Optimizations
-1. **Virtual Scrolling**: Handles 1000+ candidates smoothly
-2. **Lazy Loading**: Route-based code splitting
-3. **Memoization**: Prevents unnecessary re-renders
-4. **Optimistic Updates**: Instant UI feedback
 
-### Error Handling
-- Network error simulation (8% failure rate)
-- Automatic rollback on failed mutations
-- User-friendly error messages
-- Graceful degradation
+The app auto-loads with:
 
-### Accessibility
-- Semantic HTML throughout
-- Keyboard navigation support
-- ARIA labels where needed
-- Focus management in modals
+25 job postings
 
-### Type Safety
-- 100% TypeScript coverage
-- Strict mode enabled
-- Generated types from database schema
-- Comprehensive interface definitions
+1000 candidates
 
-## Known Limitations & Future Enhancements
+5 sample assessments
 
-### Current Limitations
-1. **File Uploads**: Stub implementation (UI only)
-2. **@Mentions**: Visual rendering only, no autocomplete
-3. **Authentication**: No user authentication (public access)
-4. **Search**: Client-side only (could be server-side for scale)
+💡 Technical Highlights
 
-### Potential Enhancements
-1. **Real-time Updates**: Supabase subscriptions for live collaboration
-2. **Advanced Analytics**: Hiring metrics and dashboards
-3. **Email Notifications**: Candidate status updates
-4. **Interview Scheduling**: Calendar integration
-5. **Bulk Actions**: Multi-select and batch operations
-6. **Export/Import**: CSV/Excel data handling
-7. **Mobile App**: React Native version
-8. **AI Integration**: Resume parsing, candidate matching
+Virtual Scrolling: Handles 1000+ candidates smoothly
 
-## Testing Approach
+Lazy Loading: Route-based code splitting
 
-While automated tests weren't implemented due to time constraints, the application is designed for testability:
+Optimistic Updates: Instant UI feedback
 
-### Unit Testing Strategy
-- Test API functions with mocked Supabase client
-- Test validation logic in isolation
-- Test utility functions
+Error Simulation: Randomized network error handling
 
-### Integration Testing Strategy
-- Test page components with React Testing Library
-- Mock API responses for consistent behavior
-- Test user flows (create job, move candidate, etc.)
+Accessibility: Semantic HTML + ARIA support
 
-### E2E Testing Strategy
-- Use Playwright/Cypress for full flows
-- Test drag-and-drop interactions
-- Test form submissions and validation
+Type Safety: 100% TypeScript coverage
 
-## Browser Support
+🔍 Known Limitations
 
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Android)
+File upload UI only (no backend storage)
 
-## Performance Metrics
+@Mentions feature is visual-only
 
-- **Initial Load**: < 2s on 3G
-- **Time to Interactive**: < 3s
-- **Bundle Size**: ~430KB (gzipped: ~127KB)
-- **Lighthouse Score**: 90+ (Performance, Accessibility, Best Practices)
+No authentication (single-user mode)
 
-## Deployment
+Search is client-side only
 
-The application is optimized for deployment on:
-- **Vercel**: Zero-config deployment
-- **Netlify**: Automatic builds from Git
-- **AWS Amplify**: Full-stack deployment
-- **Static Hosting**: Any static file host (S3, GitHub Pages, etc.)
+🧭 Future Enhancements
 
-Build command: `npm run build`
-Output directory: `dist`
+Real backend integration (Node.js / Supabase / Firebase)
 
-## Contributing
+Real-time collaboration
 
-This is a technical assignment project. For real-world use:
-1. Add comprehensive test coverage
-2. Implement proper authentication
-3. Add CI/CD pipeline
-4. Set up monitoring and analytics
-5. Implement proper error tracking (Sentry, etc.)
+Analytics dashboard
 
-DEMO SEE HERE 
-(https://drive.google.com/file/d/1KaBkaO2ZxWHZLsGllZSjNsFPNQzK7EIz/view?usp=drive_link)
+CSV/Excel export
 
-## License
+AI-based candidate matching
 
-This project is created as a technical assignment and is for demonstration purposes.
+🧪 Testing Approach
 
----
+Unit tests (planned) for API and validation logic
 
-Built with care by demonstrating modern React patterns, TypeScript best practices, and production-ready architecture.
+Integration tests with React Testing Library
+
+E2E tests (future) with Playwright or Cypress
+
+🌐 Deployment
+
+Optimized for:
+
+Vercel
+
+Netlify
+
+GitHub Pages
+
+Build command: npm run build
+Output directory: dist
+
+🎥 Demo
+
+📽️ Project Demo (Google Drive)
+
+🧑‍💻 About the Developer
+
+Hi! I’m Vaishnavi, a frontend developer passionate about building clean, responsive, and scalable web applications using React, TypeScript, and modern UI design.
+This project reflects my understanding of real-world front-end architecture and user experience design.
+
+🪪 License
+
+This project was created solely for educational and demonstration purposes.
