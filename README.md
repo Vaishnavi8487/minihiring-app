@@ -81,7 +81,7 @@ src/
 ├── lib/
 │   ├── api.ts           # Simulated API calls
 │   ├── db.ts            # Local data storage
-│   └── seed.ts          
+│   └── seed.ts          # Sample data seeding
 ├── App.tsx
 └── main.tsx
 
@@ -114,11 +114,11 @@ State Management using React hooks and context (no external library)
 
 🧩 Setup Instructions
 npm install
-npm run dev      
-npm run build     
-npm run preview 
-npm run lint     
-npm run typecheck 
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run preview   # Preview production build
+npm run lint      # Run ESLint
+npm run typecheck # TypeScript checks
 
 
 The app auto-loads with:
